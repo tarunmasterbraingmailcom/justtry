@@ -305,12 +305,9 @@
 <section class="screen" id="screen-question">
   <div class="card">
 
-    <label class="upload-circle" id="uploadCircle" for="gifInput">
-      <span class="upload-hint" id="uploadHint">Tap to add<br>her photo or gif</span>
-      <input type="file" id="gifInput" accept="image/*">
-    </label>
-    <span class="change-photo" id="changeHint" style="display:none;">tap image to change</span>
-
+    <div class="upload-circle">
+    <img src="mygif.gif" alt="Anu">
+    </div>
     <h1 class="question">Do You Still <span class="accent">Love</span> Me?</h1>
 
     <div class="btn-row" id="btnRow">
@@ -364,28 +361,6 @@
     particlesContainer.appendChild(p);
   }
 
-  /* ---------------- GIF / photo upload (in-memory only) ---------------- */
-  const gifInput = document.getElementById('gifInput');
-  const uploadCircle = document.getElementById('uploadCircle');
-  const uploadHint = document.getElementById('uploadHint');
-  const changeHint = document.getElementById('changeHint');
-
-  gifInput.addEventListener('change', (e) => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      uploadHint.style.display = 'none';
-      changeHint.style.display = 'block';
-      let img = uploadCircle.querySelector('img');
-      if(!img){
-        img = document.createElement('img');
-        uploadCircle.insertBefore(img, uploadCircle.firstChild);
-      }
-      img.src = ev.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
 
   /* ---------------- The dodging "No" button ---------------- */
   const noBtn = document.getElementById('noBtn');
